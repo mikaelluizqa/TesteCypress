@@ -9,7 +9,7 @@ Funcionalidade: Fluxo Cadastro
 
     Exemplos:
     | codigoStatus |
-    | 201          |
+    | 205          |
 
   Cenario: Buscar todos cadastros
     Dado que eu queira listar todos cadastros
