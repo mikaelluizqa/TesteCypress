@@ -9,7 +9,7 @@
   <a href="#-visão-geral">Visão Geral</a> •
   <a href="#-estrutura-do-diretório">Estrutura do Diretório</a> •
   <a href="#-instalação">Instalação</a> •
-  <a href="#como-executar">Como Executar</a> •
+  <a href="#-como-executar">Como Executar</a> •
   <a href="#-github-actions-e-notificações-no-slack">GitHub Actions e Notificações no Slack</a> •
 </p>
 
