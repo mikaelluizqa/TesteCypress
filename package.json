@@ -1,5 +1,5 @@
 {
-  "name": "automacao-provisionador",
+  "name": "ServRest",
   "version": "1.0.0",
   "description": "Projeto automação (Back-end) com a ferramenta Cypress com BDD.  ",
   "main": "index.js",
