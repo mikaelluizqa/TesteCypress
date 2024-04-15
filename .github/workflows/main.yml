@@ -26,7 +26,7 @@ jobs:
       - name: Run Cypress Tests
         run: npm run cypress:run
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
