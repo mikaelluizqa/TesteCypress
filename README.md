@@ -9,7 +9,7 @@
   <a href="#-visão-geral">Visão Geral</a> •
   <a href="#-estrutura-do-diretório">Estrutura do Diretório</a> •
   <a href="#-instalação">Instalação</a> •
-  <a href="#como-rodar">Como Rodar</a> •
+  <a href="#como-executar">Como Executar</a> •
   <a href="#-github-actions-e-notificações-no-slack">GitHub Actions e Notificações no Slack</a> •
 </p>
 
@@ -38,7 +38,7 @@ Este projeto é uma automação de testes de API usando Cypress e Cucumber. Ele 
 Para instalar as dependências do projeto, execute o seguinte comando:
 npm install
 
-## 🛠️ Como Rodar {#como-rodar}
+## 🛠️ Como Executar
 
 Para rodar os testes de automação, utilize o seguinte comando:
 npm run cypress:run
