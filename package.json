@@ -1,0 +1,23 @@
+{
+  "name": "automacao-provisionador",
+  "version": "1.0.0",
+  "description": "Projeto automação (Back-end) com a ferramenta Cypress com BDD.  ",
+  "main": "index.js",
+  "scripts": {
+    "cypress:run": "cypress run ",
+    "cypress:open": "cypress open"
+  },
+  "author": "Mikael QA",
+  "license": "ISC",
+  "devDependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^12.17.1",
+    "esbuild": "0.18.13",
+    "moment": "^2.29.4"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^17.2.1",
+    "@faker-js/faker": "^8.4.1",
+    "cypress-plugin-api": "^2.11.1"
+  }
+}

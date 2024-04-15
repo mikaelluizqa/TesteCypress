@@ -1,0 +1,9 @@
+{
+    "stepDefinitions": [
+      "cypress/e2e/features/[filepath]/**/*.{js,ts}",
+      "cypress/e2e/features/[filepath].{js,ts}",
+      "cypress/e2e/step_definitions/fluxoCadastro/**/*.{js,ts}"
+    ]
+  }
+  
+  
