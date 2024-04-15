@@ -4,12 +4,6 @@
 <!-- Descrição do Projeto -->
 <p align="center">Projeto de automação de testes de API com Cypress e Cucumber, focado em qualidade e eficiência.</p>
 
-<!-- Badges (Opcional) -->
-<p align="center">
-  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/seu-usuario/TesteCypress/CI?label=build&logo=github&style=flat-square">
-  <img alt="GitHub" src="https://img.shields.io/github/license/seu-usuario/TesteCypress?style=flat-square">
-</p>
-
 <!-- Tópicos do Projeto -->
 <p align="center">
   <a href="#-visão-geral">Visão Geral</a> •
