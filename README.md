@@ -1,50 +1,32 @@
-# Projeto Cypress
+# TesteCypress (Automação de API com Cypress e Cucumber)
 
-Projeto automação (Back-end) com a ferramenta Cypress com BDD.
+## Estrutura do Diretório
 
-## 1. Descrição do framework: Cypress & Cucumber
+- **.github/workflows/**: Contém arquivos de configuração para o GitHub Actions.
+- **e2e/**: Contém testes de ponta a ponta (end-to-end).
+  - **fluxoCadastro.feature**: Arquivo de especificação de teste para o fluxo de cadastro.
+  - **step_definitions/fluxoCadastro/**: Definições de passos para o fluxo de cadastro.
+    - buscarUsuario.js: Definição de passo para buscar usuário.
+    - cadastrarUsuario.js: Definição de passo para cadastrar usuário.
+    - deletarUsuario.js: Definição de passo para deletar usuário.
+  - **request/fluxoCadastro/**: Requisições para o fluxo de cadastro.
+    - buscarUsuario.js: Requisição para buscar usuário.
+    - cadastrarUsuario.js: Requisição para cadastrar usuário.
+    - deletarUsuario.js: Requisição para deletar usuário.
+  - **support/commands/**: Comandos de suporte para os testes de ponta a ponta.
+- **Outros arquivos**:
+  - .cypress-cucumber-preprocessorrc.json: Configurações do preprocessador Cypress Cucumber.
+  - .gitignore: Arquivos e diretórios ignorados pelo Git.
+  - cypress.config.js: Configurações do Cypress.
+  - package-lock.json: Lista exata de dependências do projeto (gerada pelo npm).
+  - package.json: Metadados do projeto e lista de dependências do Node.js.
 
- - **Cypress** é uma ferramenta de teste (automatizado) de front-end e back-end criada para a web moderna. Cypress consiste em um aplicativo gratuito, de código aberto , instalado localmente e um serviço de Dashboard para gravar os testes.
- > Fonte: [docs.cypress.io](https://docs.cypress.io/guides/overview/why-cypress#What-you-ll-learn)
+## Instalação
 
-- **Cucumber** lê especificações executáveis ​​escritas em texto simples e valida se o software faz o que essas especificações dizem. As especificações consistem em vários exemplos ou cenários.
-Cada cenário é uma lista de etapas para o Cucumber trabalhar, é verificado se o software está de acordo com a especificação.
-> Fonte: [cucumber.io/docs](https://cucumber.io/docs/guides/overview/)
+Para instalar as dependências do projeto, execute o seguinte comando: npm install
 
+## Como Rodar
 
-## 2. Dependências do projeto & Dicas
+npm run cypress:run
 
- - Este projeto tem as dependências listadas abaixo, e devem ser baixadas/instaladas na sua máquina para execução do mesmo:
-	 - Node JS
-		 - [Link com as orientações para download/instalação](https://nodejs.org/en/download/).
-	 - NPM
-		 - [Link com as orientações para download/instalação](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
- - O Sistema Operacional recomendado para execução deste projeto é o Linux Ubuntu a partir da versão 20.04.
-
-## 3. Passo a passo para instalação e execução
-
-1. npm install -f
-2. npm run cypress:execution
-
-## 4. Passo a passo para execução do projeto & Report
-
-Há duas formas de executar os testes neste projeto.
-
- 1. O Primeiro é através da execução no próprio terminal, basta executar o comando abaixo:
-
-` npm run cypress:run`
-
-> Ao executar este comando, será gerado automaticamente os relatórios mochawesome (um por .feature) nos formatos Json e Html.
-
-2. A segunda maneira, é através da interface gráfica do Cypress, basta apenas executar o comando a seguir:
-
-`npm run cypress:execution `
-
-> Ao executar este comando, será gerado automaticamente os relatórios mochawesome (um por .feature) nos formatos Json e Html.
-
-Observação: Ao executar este projeto através do comando ` npm run cypress:run`, é de boa prática apagar os relatórios e capturas de tela (Caso não seja mais útil). Para realizar esta "limpeza", basta executar apenas o comando:
-<<<<<<< HEAD
-`npm run report:cleanup`
-=======
-`npm run report:cleanup`
->>>>>>> c043dd9605df0bb181850d5959471fa7b0a00f0c
+## Esse README.md fornece uma visão geral da estrutura do projeto, instruções de instalação e execução dos testes, além de explicar a integração com o GitHub Actions para notificações no Slack.
