@@ -22,8 +22,8 @@ jobs:
 
       - name: Set Environment Variables
         run: |
-          export SLACK_CHANNEL=general
-          export SLACK_WEBHOOK=https://hooks.slack.com/services/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
+          $env:SLACK_CHANNEL = "general"
+          $env:SLACK_WEBHOOK = "https://hooks.slack.com/services/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"
 
       - name: Install Dependencies
         run: npm install --force
