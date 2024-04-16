@@ -43,7 +43,7 @@ jobs:
           SLACK_MESSAGE: 'Cypress tests passed! :white_check_mark:'
           SLACK_TITLE: Testes Cypress
           SLACK_USERNAME: GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
 
       - name: Slack Notification on Failure
         if: failure()
@@ -55,4 +55,4 @@ jobs:
           SLACK_MESSAGE: 'Cypress tests failed! :x:'
           SLACK_TITLE: Testes Cypress
           SLACK_USERNAME: GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
