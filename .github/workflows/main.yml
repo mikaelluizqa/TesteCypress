@@ -20,11 +20,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set Environment Variables
-        run: |
-          $env:SLACK_CHANNEL = "general"
-          $env:SLACK_WEBHOOK = "https://hooks.slack.com/services/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"
-
       - name: Install Dependencies
         run: npm install --force
 
@@ -38,6 +33,7 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
+      - uses: actions/checkout@v4
       - name: Slack Notification on Success
         if: success()
         uses: rtCamp/action-slack-notify@v2
@@ -47,7 +43,9 @@ jobs:
           SLACK_MESSAGE: 'Cypress tests passed! :white_check_mark:'
           SLACK_TITLE: Testes Cypress
           SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
+      - uses: actions/checkout@v4
       - name: Slack Notification on Failure
         if: failure()
         uses: rtCamp/action-slack-notify@v2
@@ -57,3 +55,4 @@ jobs:
           SLACK_MESSAGE: 'Cypress tests failed! :x:'
           SLACK_TITLE: Testes Cypress
           SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
