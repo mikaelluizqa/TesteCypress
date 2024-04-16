@@ -35,18 +35,18 @@ jobs:
 
       - name: Send Slack Notification on Success
         if: success()
-        uses: slack/notify-action@v2
+        uses: slack/action@v3
         with:
           channel: ${{ secrets.SLACK_CHANNEL }}
-          message: 'Cypress tests passed! :white_check_mark:'
+          text: 'Cypress tests passed! :white_check_mark:'
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
       - name: Send Slack Notification on Failure
         if: failure()
-        uses: slack/notify-action@v2
+        uses: slack/action@v3
         with:
           channel: ${{ secrets.SLACK_CHANNEL }}
-          message: 'Cypress tests failed! :x:'
+          text: 'Cypress tests failed! :x:'
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
