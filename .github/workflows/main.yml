@@ -33,30 +33,20 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: Checkout Again
-        uses: actions/checkout@v4
-
-      - name: Slack Notification on Success
+      - name: Send Slack Notification on Success
         if: success()
-        uses: rtCamp/action-slack-notify@v2
+        uses: slack/notify-action@v2
+        with:
+          channel: ${{ secrets.SLACK_CHANNEL }}
+          message: 'Cypress tests passed! :white_check_mark:'
         env:
-          SLACK_COLOR: success
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'Cypress tests passed! :white_check_mark:'
-          SLACK_TITLE: Testes Cypress
-          SLACK_USERNAME: GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: Checkout Again
-        uses: actions/checkout@v4
-
-      - name: Slack Notification on Failure
+      - name: Send Slack Notification on Failure
         if: failure()
-        uses: rtCamp/action-slack-notify@v2
+        uses: slack/notify-action@v2
+        with:
+          channel: ${{ secrets.SLACK_CHANNEL }}
+          message: 'Cypress tests failed! :x:'
         env:
-          SLACK_COLOR: danger
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'Cypress tests failed! :x:'
-          SLACK_TITLE: Testes Cypress
-          SLACK_USERNAME: GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
