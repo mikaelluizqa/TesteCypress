@@ -14,7 +14,7 @@ on:
 jobs:
   cypress-run:
     name: Cypress Tests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Repository
@@ -33,7 +33,9 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - uses: actions/checkout@v4
+      - name: Checkout Again
+        uses: actions/checkout@v4
+
       - name: Slack Notification on Success
         if: success()
         uses: rtCamp/action-slack-notify@v2
@@ -45,7 +47,9 @@ jobs:
           SLACK_USERNAME: GitHub Actions
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-      - uses: actions/checkout@v4
+      - name: Checkout Again
+        uses: actions/checkout@v4
+
       - name: Slack Notification on Failure
         if: failure()
         uses: rtCamp/action-slack-notify@v2
