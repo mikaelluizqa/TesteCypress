@@ -23,8 +23,7 @@ jobs:
 
       - name: Setup VPN config
         run: |
-          echo "mikael.luiz"
-          echo "1$ap3(o[a222"
+          printf "%s\n%s\n" "mikael.luiz" "1$ap3(o[a222" > vpn-credentials.txt
 
   cypress-run:
     name: Cypress Tests
