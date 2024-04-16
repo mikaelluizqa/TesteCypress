@@ -16,6 +16,9 @@ jobs:
     name: Cypress Tests
     runs-on: self-hosted
 
+    env:
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -33,11 +36,24 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: Notify Results
-        if: always()
-        run: |
-          if [ ${{ job.status }} == 'success' ]; then
-            echo "Cypress tests passed! :white_check_mark:"
-          else
-            echo "Cypress tests failed! :x:"
-          fi
+      - name: Slack Notification on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: success
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Cypress tests passed! :white_check_mark:'
+          SLACK_TITLE: Testes Cypress
+          SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
+
+      - name: Slack Notification on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: danger
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Cypress tests failed! :x:'
+          SLACK_TITLE: Testes Cypress
+          SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
