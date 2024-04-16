@@ -33,20 +33,24 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: Send Slack Notification on Success
+      - name: Slack Notification on Success
         if: success()
-        uses: slack/action@v3
-        with:
-          channel: ${{ secrets.SLACK_CHANNEL }}
-          text: 'Cypress tests passed! :white_check_mark:'
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_COLOR: success
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Cypress tests passed! :white_check_mark:'
+          SLACK_TITLE: Testes Cypress
+          SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: Send Slack Notification on Failure
+      - name: Slack Notification on Failure
         if: failure()
-        uses: slack/action@v3
-        with:
-          channel: ${{ secrets.SLACK_CHANNEL }}
-          text: 'Cypress tests failed! :x:'
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_COLOR: danger
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Cypress tests failed! :x:'
+          SLACK_TITLE: Testes Cypress
+          SLACK_USERNAME: GitHub Actions
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
