@@ -33,12 +33,14 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - uses: dawidd6/action-send-mail@v3
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.example.com
+          server_address: smtp.gmail.com
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
+          from: ${{ secrets.EMAIL_USERNAME }}
           subject: "Notificação do GitHub Actions - Testes Cypress Concluídos"
           body: "Os testes Cypress foram concluídos."
-          to: mikaelluizqa@gmail.com
+          to: seu_email@gmail.com
