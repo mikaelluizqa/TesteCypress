@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           from: ${{ secrets.EMAIL_USERNAME }}
-          subject: "Notificação do GitHub Actions - Testes Cypress Concluídos"
+          subject: "Notificação - Testes Cypress Concluídos"
           body: |
             Olá,
       
@@ -77,4 +77,3 @@ jobs:
           url: "https://esolution.com.br/"
           username: Cypress eSolution
           image: ${{ secrets.EMBED_IMAGE }}
-
