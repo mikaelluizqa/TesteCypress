@@ -33,7 +33,7 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: Send Email Notification on Success
+      - name: Enviar Notificação por E-mail em Caso de Sucesso
         if: success()
         uses: dawidd6/action-send-mail@v3
         with:
@@ -44,10 +44,17 @@ jobs:
           from: ${{ secrets.EMAIL_USERNAME }}
           subject: "Notificação do GitHub Actions - Testes Cypress Concluídos"
           body: |
-            Olá,
-            Gostaríamos de informar que os testes Cypress foram concluídos com sucesso.
-            Atenciosamente,
+            <p>Olá,</p>
+      
+            <p>Gostaríamos de informar que os testes Cypress foram concluídos com sucesso.</p>
+      
+            <p>Atenciosamente,<br>
+            [Time de QA]</p>
+      
+            <img src="https://esolution.com.br/static/images/logo/esolution/logoesolution.svg">
           to: mikaelluizqa@gmail.com
+        env:
+          CONTENT_TYPE: text/html
 
 
       - uses: sarisia/actions-status-discord@v1
@@ -57,8 +64,8 @@ jobs:
           status: ${{ job.status }}
           content: "Hey Time!!"
           title: ${{ github.workflow}}
-          description: "Automação Cypress"
+          description: "Automação Cypress eSoluion"
           color: 0x0000ff
-          url: "https://github.com/sarisia/actions-status-discord"
-          username: Testes Cypress
+          url: "https://esolution.com.br/"
+          username: Cypress eSolution
           image: ${{ secrets.EMBED_IMAGE }}
