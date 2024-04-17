@@ -59,11 +59,11 @@ jobs:
           status: ${{ job.status }}
           content: "Hey Time!!"
           title: ${{ github.workflow}}
-          description: "Automação Passou!!"
+          description: "Testes Automatizados: Falha!"
           color: 0xff0000
           url: "https://esolution.com.br/"
           username: Cypress eSolution
-          image: ${{ secrets.EMBED_IMAGE }} 0xff0000
+          image: ${{ secrets.EMBED_IMAGE }}0
 
       - uses: sarisia/actions-status-discord@v1
         if: success()
@@ -72,7 +72,7 @@ jobs:
           status: ${{ job.status }}
           content: "Hey Time!!"
           title: ${{ github.workflow}}
-          description: "Automação Falhou!!"
+          description: "Testes Automatizados: Sucesso!"
           color: 0x0000ff
           url: "https://esolution.com.br/"
           username: Cypress eSolution
