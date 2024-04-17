@@ -33,23 +33,6 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: Send Email Notification on Failure
-        if: failure()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          from: ${{ secrets.EMAIL_USERNAME }}
-          subject: "Notificação do GitHub Actions - Testes Cypress Falharam"
-          body: <p>Olá,</p>
-                <p>Gostaríamos de informar que os testes Cypress falharam. Anexamos as capturas de tela para sua referência.</p>
-                <p>Atenciosamente,<br/>Sua equipe de testes</p>
-          to: mikaelluizqa@gmail.com
-          attachments: |
-            ${{ github.run_id }}/artifacts/cypress-screenshots/*
-
       - name: Send Email Notification on Success
         if: success()
         uses: dawidd6/action-send-mail@v3
@@ -61,13 +44,9 @@ jobs:
           from: ${{ secrets.EMAIL_USERNAME }}
           subject: "Notificação do GitHub Actions - Testes Cypress Concluídos"
           body: |
-            <html>
-            <body>
-              <p>Olá,</p>
-              <p>Gostaríamos de informar que os testes Cypress foram concluídos com sucesso. Você pode ver os detalhes do workflow <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">aqui</a>.</p>
-              <p>Atenciosamente,<br/>Sua equipe de testes</p>
-            </body>
-            </html>
+            Olá,
+            Gostaríamos de informar que os testes Cypress foram concluídos com sucesso.
+            Atenciosamente,
           to: mikaelluizqa@gmail.com
 
 
@@ -82,4 +61,4 @@ jobs:
           color: 0x0000ff
           url: "https://github.com/sarisia/actions-status-discord"
           username: Testes Cypress
-          nocontext: true
+          image: ${{ secrets.EMBED_IMAGE }}
