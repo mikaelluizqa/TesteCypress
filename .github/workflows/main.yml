@@ -59,7 +59,7 @@ jobs:
           status: ${{ job.status }}
           content: "Hey Time!!"
           title: ${{ github.workflow}}
-          description: "Testes Automatizados: Falha!"
+          description: "Testes Automatizados: Falhou!"
           color: 0xff0000
           url: "https://esolution.com.br/"
           username: Cypress eSolution
