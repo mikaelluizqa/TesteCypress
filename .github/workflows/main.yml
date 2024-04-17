@@ -44,28 +44,37 @@ jobs:
           from: ${{ secrets.EMAIL_USERNAME }}
           subject: "Notificação do GitHub Actions - Testes Cypress Concluídos"
           body: |
-            <p>Olá,</p>
+            Olá,
       
-            <p>Gostaríamos de informar que os testes Cypress foram concluídos com sucesso.</p>
+            Gostaríamos de informar que os testes Cypress foram concluídos com sucesso.
       
-            <p>Atenciosamente,<br>
-            [Time de QA]</p>
-      
-            <img src="https://esolution.com.br/static/images/logo/esolution/logoesolution.svg">
+            Atenciosamente,
+            [Time de QA]
           to: mikaelluizqa@gmail.com
-        env:
-          CONTENT_TYPE: text/html
-
 
       - uses: sarisia/actions-status-discord@v1
-        if: always()
+        if: failure()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
           content: "Hey Time!!"
           title: ${{ github.workflow}}
-          description: "Automação Cypress eSoluion"
+          description: "Automação Passou!!"
           color: 0x0000ff
           url: "https://esolution.com.br/"
           username: Cypress eSolution
           image: ${{ secrets.EMBED_IMAGE }}
+
+      - uses: sarisia/actions-status-discord@v1
+        if: success()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          content: "Hey Time!!"
+          title: ${{ github.workflow}}
+          description: "Automação Falhou!!"
+          color: 0xff0000
+          url: "https://esolution.com.br/"
+          username: Cypress eSolution
+          image: ${{ secrets.EMBED_IMAGE }}
+
