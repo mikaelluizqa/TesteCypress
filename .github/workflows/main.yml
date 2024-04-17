@@ -44,3 +44,9 @@ jobs:
           subject: "Notificação do GitHub Actions - Testes Cypress Concluídos"
           body: "Os testes Cypress foram concluídos."
           to: mikaelluizqa@gmail.com
+
+      - name: Discord Webhook Action
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          content: "Test"
