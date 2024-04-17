@@ -43,15 +43,12 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           from: ${{ secrets.EMAIL_USERNAME }}
           subject: "Notificação do GitHub Actions - Testes Cypress Falharam"
-          body: |
-            <html>
-            <body>
-              <p>Olá,</p>
-              <p>Gostaríamos de informar que os testes Cypress falharam. Anexamos as capturas de tela para sua referência.</p>
-              <p>Atenciosamente,<br/>Sua equipe de testes</p>
-            </body>
-            </html>
+          body: <p>Olá,</p>
+                <p>Gostaríamos de informar que os testes Cypress falharam. Anexamos as capturas de tela para sua referência.</p>
+                <p>Atenciosamente,<br/>Sua equipe de testes</p>
           to: mikaelluizqa@gmail.com
+          attachments: |
+            ${{ github.run_id }}/artifacts/cypress-screenshots/*
 
       - name: Send Email Notification on Success
         if: success()
@@ -79,9 +76,10 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          content: "Hey <@316911818725392384>"
-          title: "deploy"
-          description: "Build and deploy to GitHub Pages"
+          content: "Hey Time!!"
+          title: ${{ github.workflow}}
+          description: "Automação Cypress"
           color: 0x0000ff
           url: "https://github.com/sarisia/actions-status-discord"
-          username: GitHub Actions
+          username: Testes Cypress
+          nocontext: true
