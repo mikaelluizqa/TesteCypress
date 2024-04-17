@@ -15,10 +15,7 @@ jobs:
   cypress-run:
     name: Cypress Tests
     runs-on: self-hosted
-
-    env:
-      SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
-
+    
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
